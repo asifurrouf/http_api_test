@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20140915 16:53:07.879" generator="Robot 2.8.5 (Python 2.7.5 on darwin)">
+<suite source="/Users/deepti/localdisk/github/http_api_test/http_api_calls.txt" id="s1" name="Http Api Calls">
+<test id="s1-t1" name="Do the OAuth Dance">
+<kw type="kw" name="${REQUEST_TOKEN} = oauth_dance.Get Oauth Token">
+<doc></doc>
+<arguments>
+<arg>${CONSUMER_KEY}</arg>
+<arg>${CONSUMER_SECRET}</arg>
+</arguments>
+<msg timestamp="20140915 16:53:09.369" level="TRACE">Arguments: [ u'BY93LW1D9LEUYLBKA62T58AQNLC1FF' | u'SWGCNDJA1VYAPCHDDBQ9HCRMXB5GES' ]</msg>
+<msg timestamp="20140915 16:53:14.693" level="TRACE">Return: {'oauth_token_secret': 'LCPNJODCHFI71YCM2PCIAAHEVBIF08', 'oauth_token': 'V2KAIE0G9BZ4YOSWVVYL4G4EWATYJB', 'oauth_callback_confirmed': 'true'}</msg>
+<msg timestamp="20140915 16:53:14.693" level="INFO">${REQUEST_TOKEN} = {'oauth_token_secret': 'LCPNJODCHFI71YCM2PCIAAHEVBIF08', 'oauth_token': 'V2KAIE0G9BZ4YOSWVVYL4G4EWATYJB', 'oauth_callback_confirmed': 'true'}</msg>
+<status status="PASS" endtime="20140915 16:53:14.692" starttime="20140915 16:53:09.369"></status>
+</kw>
+<kw type="kw" name="${OAUTH_TOKEN_PAGE_URL} = oauth_dance.Get Oauth Token Page Url">
+<doc></doc>
+<arguments>
+<arg>${REQUEST_TOKEN}</arg>
+</arguments>
+<msg timestamp="20140915 16:53:14.694" level="TRACE">Arguments: [ {'oauth_token_secret': 'LCPNJODCHFI71YCM2PCIAAHEVBIF08', 'oauth_token': 'V2KAIE0G9BZ4YOSWVVYL4G4EWATYJB', 'oauth_callback_confirmed': 'true'} ]</msg>
+<msg timestamp="20140915 16:53:14.694" level="TRACE">Return: 'https://api.xero.com/oauth/Authorize?oauth_token=V2KAIE0G9BZ4YOSWVVYL4G4EWATYJB'</msg>
+<msg timestamp="20140915 16:53:14.694" level="INFO">${OAUTH_TOKEN_PAGE_URL} = https://api.xero.com/oauth/Authorize?oauth_token=V2KAIE0G9BZ4YOSWVVYL4G4EWATYJB</msg>
+<status status="PASS" endtime="20140915 16:53:14.694" starttime="20140915 16:53:14.693"></status>
+</kw>
+<kw type="kw" name="Launch OAuth Token Page">
+<doc>Launches Xero site in Firefox</doc>
+<arguments>
+<arg>${OAUTH_TOKEN_PAGE_URL}</arg>
+</arguments>
+<msg timestamp="20140915 16:53:14.697" level="TRACE">Arguments: [ ${PAGE_URL}='https://api.xero.com/oauth/Authorize?oauth_token=V2KAIE0G9BZ4YOSWVVYL4G4EWATYJB' ]</msg>
+<kw type="kw" name="Selenium2Library.Open Browser">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${PAGE_URL}</arg>
+<arg>${BROWSER_FIREFOX}</arg>
+</arguments>
+<msg timestamp="20140915 16:53:14.697" level="TRACE">Arguments: [ 'https://api.xero.com/oauth/Authorize?oauth_token=V2KAIE0G9BZ4YOSWVVYL4G4EWATYJB' | u'firefox' ]</msg>
+<msg timestamp="20140915 16:53:14.698" level="INFO">Opening browser 'firefox' to base url 'https://api.xero.com/oauth/Authorize?oauth_token=V2KAIE0G9BZ4YOSWVVYL4G4EWATYJB'</msg>
+<msg timestamp="20140915 16:53:20.210" level="DEBUG">POST http://127.0.0.1:54048/hub/session {"desiredCapabilities": {"platform": "ANY", "browserName": "firefox", "version": "", "javascriptEnabled": true}}</msg>
+<msg timestamp="20140915 16:53:20.267" level="DEBUG">Finished Request</msg>
+<msg timestamp="20140915 16:53:20.268" level="DEBUG">POST http://127.0.0.1:54048/hub/session/ac255a01-06aa-ad4a-b5bc-9450350ac905/timeouts/async_script {"sessionId": "ac255a01-06aa-ad4a-b5bc-9450350ac905", "ms": 50000.0}</msg>
+<msg timestamp="20140915 16:53:20.274" level="DEBUG">Finished Request</msg>
+<msg timestamp="20140915 16:53:20.274" level="DEBUG">POST http://127.0.0.1:54048/hub/session/ac255a01-06aa-ad4a-b5bc-9450350ac905/timeouts/implicit_wait {"sessionId": "ac255a01-06aa-ad4a-b5bc-9450350ac905", "ms": 0.0}</msg>
+<msg timestamp="20140915 16:53:20.279" level="DEBUG">Finished Request</msg>
+<msg timestamp="20140915 16:53:20.280" level="DEBUG">POST http://127.0.0.1:54048/hub/session/ac255a01-06aa-ad4a-b5bc-9450350ac905/url {"url": "https://api.xero.com/oauth/Authorize?oauth_token=V2KAIE0G9BZ4YOSWVVYL4G4EWATYJB", "sessionId": "ac255a01-06aa-ad4a-b5bc-9450350ac905"}</msg>
+<msg timestamp="20140915 16:53:38.009" level="DEBUG">Finished Request</msg>
+<msg timestamp="20140915 16:53:38.009" level="DEBUG">Opened browser with session id ac255a01-06aa-ad4a-b5bc-9450350ac905</msg>
+<msg timestamp="20140915 16:53:38.010" level="TRACE">Return: 1</msg>
+<status status="PASS" endtime="20140915 16:53:38.010" starttime="20140915 16:53:14.697"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Maximize Browser Window">
+<doc>Maximizes current browser window.</doc>
+<arguments>
+</arguments>
+<msg timestamp="20140915 16:53:38.010" level="TRACE">Arguments: [  ]</msg>
+<msg timestamp="20140915 16:53:38.010" level="DEBUG">POST http://127.0.0.1:54048/hub/session/ac255a01-06aa-ad4a-b5bc-9450350ac905/window/current/maximize {"windowHandle": "current", "sessionId": "ac255a01-06aa-ad4a-b5bc-9450350ac905"}</msg>
+<msg timestamp="20140915 16:53:39.511" level="DEBUG">Finished Request</msg>
+<msg timestamp="20140915 16:53:39.511" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20140915 16:53:39.511" starttime="20140915 16:53:38.010"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Page Should Contain Element">
+<doc>Verifies element identified by `locator` is found on the current page.</doc>
+<arguments>
+<arg>${EMAIL_INPUT_TEXTBOX}</arg>
+</arguments>
+<msg timestamp="20140915 16:53:39.512" level="TRACE">Arguments: [ u'id=email' ]</msg>
+<msg timestamp="20140915 16:53:39.512" level="DEBUG">POST http://127.0.0.1:54048/hub/session/ac255a01-06aa-ad4a-b5bc-9450350ac905/elements {"using": "id", "sessionId": "ac255a01-06aa-ad4a-b5bc-9450350ac905", "value": "email"}</msg>
+<msg timestamp="20140915 16:53:39.691" level="DEBUG">Finished Request</msg>
+<msg timestamp="20140915 16:53:39.691" level="INFO">Current page contains element 'id=email'.</msg>
+<msg timestamp="20140915 16:53:39.691" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20140915 16:53:39.691" starttime="20140915 16:53:39.511"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Set Selenium Speed">
+<doc>Sets the delay in seconds that is waited after each Selenium command.</doc>
+<arguments>
+<arg>3</arg>
+</arguments>
+<msg timestamp="20140915 16:53:39.691" level="TRACE">Arguments: [ u'3' ]</msg>
+<msg timestamp="20140915 16:53:39.692" level="TRACE">Return: '0 seconds'</msg>
+<status status="PASS" endtime="20140915 16:53:39.692" starttime="20140915 16:53:39.691"></status>
+</kw>
+<msg timestamp="20140915 16:53:39.692" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20140915 16:53:39.692" starttime="20140915 16:53:14.694"></status>
+</kw>
+<kw type="kw" name="Sign In to Xero And Authorize">
+<doc>Log into the xero website</doc>
+<arguments>
+</arguments>
+<msg timestamp="20140915 16:53:39.693" level="TRACE">Arguments: [  ]</msg>
+<kw type="kw" name="Selenium2Library.Input Text">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${EMAIL_INPUT_TEXTBOX}</arg>
+<arg>${USER_EMAIL}</arg>
+</arguments>
+<msg timestamp="20140915 16:53:39.693" level="TRACE">Arguments: [ u'id=email' | u'deepti.kinnerkar@gmail.com' ]</msg>
+<msg timestamp="20140915 16:53:39.694" level="INFO">Typing text 'deepti.kinnerkar@gmail.com' into text field 'id=email'</msg>
+<msg timestamp="20140915 16:53:39.694" level="DEBUG">POST http://127.0.0.1:54048/hub/session/ac255a01-06aa-ad4a-b5bc-9450350ac905/elements {"using": "id", "sessionId": "ac255a01-06aa-ad4a-b5bc-9450350ac905", "value": "email"}</msg>
+<msg timestamp="20140915 16:53:39.701" level="DEBUG">Finished Request</msg>
+<msg timestamp="20140915 16:53:42.703" level="DEBUG">POST http://127.0.0.1:54048/hub/session/ac255a01-06aa-ad4a-b5bc-9450350ac905/element/{d07c24f5-f0de-d040-8de0-b950f7f55619}/clear {"sessionId": "ac255a01-06aa-ad4a-b5bc-9450350ac905", "id": "{d07c24f5-f0de-d040-8de0-b950f7f55619}"}</msg>
+<msg timestamp="20140915 16:53:42.717" level="DEBUG">Finished Request</msg>
+<msg timestamp="20140915 16:53:45.720" level="DEBUG">POST http://127.0.0.1:54048/hub/session/ac255a01-06aa-ad4a-b5bc-9450350ac905/element/{d07c24f5-f0de-d040-8de0-b950f7f55619}/value {"sessionId": "ac255a01-06aa-ad4a-b5bc-9450350ac905", "id": "{d07c24f5-f0de-d040-8de0-b950f7f55619}", "value": ["d", "e", "e", "p", "t", "i", ".", "k", "i", "n", "n", "e", "r", "k", "a", "r", "@", "g", "m", "a", "i", "l", ".", "c", "o", "m"]}</msg>
+<msg timestamp="20140915 16:53:45.826" level="DEBUG">Finished Request</msg>
+<msg timestamp="20140915 16:53:48.829" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20140915 16:53:48.829" starttime="20140915 16:53:39.693"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Input Text">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${PASSWORD_INPUT_TEXTBOX}</arg>
+<arg>${USER_PASSWORD}</arg>
+</arguments>
+<msg timestamp="20140915 16:53:48.830" level="TRACE">Arguments: [ u'id=password' | u'Secret123' ]</msg>
+<msg timestamp="20140915 16:53:48.830" level="INFO">Typing text 'Secret123' into text field 'id=password'</msg>
+<msg timestamp="20140915 16:53:48.830" level="DEBUG">POST http://127.0.0.1:54048/hub/session/ac255a01-06aa-ad4a-b5bc-9450350ac905/elements {"using": "id", "sessionId": "ac255a01-06aa-ad4a-b5bc-9450350ac905", "value": "password"}</msg>
+<msg timestamp="20140915 16:53:48.887" level="DEBUG">Finished Request</msg>
+<msg timestamp="20140915 16:53:51.889" level="DEBUG">POST http://127.0.0.1:54048/hub/session/ac255a01-06aa-ad4a-b5bc-9450350ac905/element/{a255beab-390d-7a4f-a51e-df4267e6d23f}/clear {"sessionId": "ac255a01-06aa-ad4a-b5bc-9450350ac905", "id": "{a255beab-390d-7a4f-a51e-df4267e6d23f}"}</msg>
+<msg timestamp="20140915 16:53:51.935" level="DEBUG">Finished Request</msg>
+<msg timestamp="20140915 16:53:54.937" level="DEBUG">POST http://127.0.0.1:54048/hub/session/ac255a01-06aa-ad4a-b5bc-9450350ac905/element/{a255beab-390d-7a4f-a51e-df4267e6d23f}/value {"sessionId": "ac255a01-06aa-ad4a-b5bc-9450350ac905", "id": "{a255beab-390d-7a4f-a51e-df4267e6d23f}", "value": ["S", "e", "c", "r", "e", "t", "1", "2", "3"]}</msg>
+<msg timestamp="20140915 16:53:54.997" level="DEBUG">Finished Request</msg>
+<msg timestamp="20140915 16:53:57.999" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20140915 16:53:57.999" starttime="20140915 16:53:48.829"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Click Element">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>${LOGIN_BUTTON}</arg>
+</arguments>
+<msg timestamp="20140915 16:53:58.000" level="TRACE">Arguments: [ u'id=submitButton' ]</msg>
+<msg timestamp="20140915 16:53:58.000" level="INFO">Clicking element 'id=submitButton'.</msg>
+<msg timestamp="20140915 16:53:58.000" level="DEBUG">POST http://127.0.0.1:54048/hub/session/ac255a01-06aa-ad4a-b5bc-9450350ac905/elements {"using": "id", "sessionId": "ac255a01-06aa-ad4a-b5bc-9450350ac905", "value": "submitButton"}</msg>
+<msg timestamp="20140915 16:53:58.007" level="DEBUG">Finished Request</msg>
+<msg timestamp="20140915 16:54:01.009" level="DEBUG">POST http://127.0.0.1:54048/hub/session/ac255a01-06aa-ad4a-b5bc-9450350ac905/element/{12cacce9-bca7-d84e-a70d-a79349c3f28a}/click {"sessionId": "ac255a01-06aa-ad4a-b5bc-9450350ac905", "id": "{12cacce9-bca7-d84e-a70d-a79349c3f28a}"}</msg>
+<msg timestamp="20140915 16:54:01.934" level="DEBUG">Finished Request</msg>
+<msg timestamp="20140915 16:54:04.935" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20140915 16:54:04.935" starttime="20140915 16:53:58.000"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Page Should Contain Element">
+<doc>Verifies element identified by `locator` is found on the current page.</doc>
+<arguments>
+<arg>${AUTHORISE_BUTTON}</arg>
+</arguments>
+<msg timestamp="20140915 16:54:04.936" level="TRACE">Arguments: [ u'//span[text()="Authorise"]' ]</msg>
+<msg timestamp="20140915 16:54:04.936" level="DEBUG">POST http://127.0.0.1:54048/hub/session/ac255a01-06aa-ad4a-b5bc-9450350ac905/elements {"using": "xpath", "sessionId": "ac255a01-06aa-ad4a-b5bc-9450350ac905", "value": "//span[text()=\"Authorise\"]"}</msg>
+<msg timestamp="20140915 16:54:14.566" level="DEBUG">Finished Request</msg>
+<msg timestamp="20140915 16:54:17.567" level="INFO">Current page contains element '//span[text()="Authorise"]'.</msg>
+<msg timestamp="20140915 16:54:17.568" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20140915 16:54:17.568" starttime="20140915 16:54:04.936"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Click Element">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>${AUTHORISE_BUTTON}</arg>
+</arguments>
+<msg timestamp="20140915 16:54:17.569" level="TRACE">Arguments: [ u'//span[text()="Authorise"]' ]</msg>
+<msg timestamp="20140915 16:54:17.569" level="INFO">Clicking element '//span[text()="Authorise"]'.</msg>
+<msg timestamp="20140915 16:54:17.569" level="DEBUG">POST http://127.0.0.1:54048/hub/session/ac255a01-06aa-ad4a-b5bc-9450350ac905/elements {"using": "xpath", "sessionId": "ac255a01-06aa-ad4a-b5bc-9450350ac905", "value": "//span[text()=\"Authorise\"]"}</msg>
+<msg timestamp="20140915 16:54:17.690" level="DEBUG">Finished Request</msg>
+<msg timestamp="20140915 16:54:20.692" level="DEBUG">POST http://127.0.0.1:54048/hub/session/ac255a01-06aa-ad4a-b5bc-9450350ac905/element/{09cc606b-865b-d046-8a78-2248f67ce96c}/click {"sessionId": "ac255a01-06aa-ad4a-b5bc-9450350ac905", "id": "{09cc606b-865b-d046-8a78-2248f67ce96c}"}</msg>
+<msg timestamp="20140915 16:54:24.148" level="DEBUG">Finished Request</msg>
+<msg timestamp="20140915 16:54:27.151" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20140915 16:54:27.151" starttime="20140915 16:54:17.568"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Page Should Contain Element">
+<doc>Verifies element identified by `locator` is found on the current page.</doc>
+<arguments>
+<arg>${VERIFIER_TOKEN_XPATH}</arg>
+</arguments>
+<msg timestamp="20140915 16:54:27.152" level="TRACE">Arguments: [ u'xpath=//h1[2]' ]</msg>
+<msg timestamp="20140915 16:54:27.153" level="DEBUG">POST http://127.0.0.1:54048/hub/session/ac255a01-06aa-ad4a-b5bc-9450350ac905/elements {"using": "xpath", "sessionId": "ac255a01-06aa-ad4a-b5bc-9450350ac905", "value": "//h1[2]"}</msg>
+<msg timestamp="20140915 16:54:27.198" level="DEBUG">Finished Request</msg>
+<msg timestamp="20140915 16:54:30.201" level="INFO">Current page contains element 'xpath=//h1[2]'.</msg>
+<msg timestamp="20140915 16:54:30.202" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20140915 16:54:30.201" starttime="20140915 16:54:27.152"></status>
+</kw>
+<msg timestamp="20140915 16:54:30.202" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20140915 16:54:30.202" starttime="20140915 16:53:39.692"></status>
+</kw>
+<kw type="kw" name="${VERIFIER_TOKEN} = Extract Verifier Code">
+<doc></doc>
+<arguments>
+</arguments>
+<msg timestamp="20140915 16:54:30.204" level="TRACE">Arguments: [  ]</msg>
+<kw type="kw" name="${TOKEN} = Selenium2Library.Get Text">
+<doc>Returns the text value of element identified by `locator`.</doc>
+<arguments>
+<arg>${VERIFIER_TOKEN_XPATH}</arg>
+</arguments>
+<msg timestamp="20140915 16:54:30.205" level="TRACE">Arguments: [ u'xpath=//h1[2]' ]</msg>
+<msg timestamp="20140915 16:54:30.205" level="DEBUG">POST http://127.0.0.1:54048/hub/session/ac255a01-06aa-ad4a-b5bc-9450350ac905/elements {"using": "xpath", "sessionId": "ac255a01-06aa-ad4a-b5bc-9450350ac905", "value": "//h1[2]"}</msg>
+<msg timestamp="20140915 16:54:30.216" level="DEBUG">Finished Request</msg>
+<msg timestamp="20140915 16:54:33.219" level="DEBUG">GET http://127.0.0.1:54048/hub/session/ac255a01-06aa-ad4a-b5bc-9450350ac905/element/{1dd4f5f2-2096-dc4d-9cdd-085ca9c4ba4d}/text {"sessionId": "ac255a01-06aa-ad4a-b5bc-9450350ac905", "id": "{1dd4f5f2-2096-dc4d-9cdd-085ca9c4ba4d}"}</msg>
+<msg timestamp="20140915 16:54:33.233" level="DEBUG">Finished Request</msg>
+<msg timestamp="20140915 16:54:36.235" level="TRACE">Return: u'3287672'</msg>
+<msg timestamp="20140915 16:54:36.236" level="INFO">${TOKEN} = 3287672</msg>
+<status status="PASS" endtime="20140915 16:54:36.235" starttime="20140915 16:54:30.204"></status>
+</kw>
+<msg timestamp="20140915 16:54:36.237" level="TRACE">Return: u'3287672'</msg>
+<msg timestamp="20140915 16:54:36.237" level="INFO">${VERIFIER_TOKEN} = 3287672</msg>
+<status status="PASS" endtime="20140915 16:54:36.236" starttime="20140915 16:54:30.203"></status>
+</kw>
+<kw type="kw" name="${ACCESS_TOKEN} = oauth_dance.Get Access Token">
+<doc></doc>
+<arguments>
+<arg>${REQUEST_TOKEN}</arg>
+<arg>${VERIFIER_TOKEN}</arg>
+<arg>${CONSUMER_KEY}</arg>
+<arg>${CONSUMER_SECRET}</arg>
+</arguments>
+<msg timestamp="20140915 16:54:36.238" level="TRACE">Arguments: [ {'oauth_token_secret': 'LCPNJODCHFI71YCM2PCIAAHEVBIF08', 'oauth_token': 'V2KAIE0G9BZ4YOSWVVYL4G4EWATYJB', 'oauth_callback_confirmed': 'true'} | u'3287672' | u'BY93LW1D9LEUYLBKA62T58AQNLC1FF' | u'SWGCNDJA1VYAPCHDDBQ9HCRMXB5GES' ]</msg>
+<msg timestamp="20140915 16:54:39.823" level="TRACE">Return: {'oauth_token_secret': 'RNY9J6FU7ZBEXNXH6ATVXCRUABJAZB', 'xero_org_muid': 'g8Eay3x$EKYy9gTtHz7koW', 'oauth_token': 'AVTEULOM8AFCZI1VCUW8QHBOOUSATG', 'oauth_expires_in': '1800'}</msg>
+<msg timestamp="20140915 16:54:39.824" level="INFO">${ACCESS_TOKEN} = {'oauth_token_secret': 'RNY9J6FU7ZBEXNXH6ATVXCRUABJAZB', 'xero_org_muid': 'g8Eay3x$EKYy9gTtHz7koW', 'oauth_token': 'AVTEULOM8AFCZI1VCUW8QHBOOUSATG', 'oauth_expires_in': '1800'}</msg>
+<status status="PASS" endtime="20140915 16:54:39.823" starttime="20140915 16:54:36.237"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Set Suite Variable">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${ACCESS_TOKEN}</arg>
+</arguments>
+<msg timestamp="20140915 16:54:39.824" level="TRACE">Arguments: [ u'${ACCESS_TOKEN}' ]</msg>
+<msg timestamp="20140915 16:54:39.824" level="INFO">${ACCESS_TOKEN} = {'oauth_token_secret': 'RNY9J6FU7ZBEXNXH6ATVXCRUABJAZB', 'xero_org_muid': 'g8Eay3x$EKYy9gTtHz7koW', 'oauth_token': 'AVTEULOM8AFCZI1VCUW8QHBOOUSATG', 'oauth_expires_in': '1800'}</msg>
+<msg timestamp="20140915 16:54:39.825" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20140915 16:54:39.824" starttime="20140915 16:54:39.824"></status>
+</kw>
+<kw type="kw" name="Selenium2Library.Close Browser">
+<doc>Closes the current browser.</doc>
+<arguments>
+</arguments>
+<msg timestamp="20140915 16:54:39.825" level="TRACE">Arguments: [  ]</msg>
+<msg timestamp="20140915 16:54:39.825" level="DEBUG">Closing browser with session id ac255a01-06aa-ad4a-b5bc-9450350ac905</msg>
+<msg timestamp="20140915 16:54:39.825" level="DEBUG">DELETE http://127.0.0.1:54048/hub/session/ac255a01-06aa-ad4a-b5bc-9450350ac905 {"sessionId": "ac255a01-06aa-ad4a-b5bc-9450350ac905"}</msg>
+<msg timestamp="20140915 16:54:39.896" level="DEBUG">Finished Request</msg>
+<msg timestamp="20140915 16:54:42.965" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20140915 16:54:42.965" starttime="20140915 16:54:39.825"></status>
+</kw>
+<doc>Does the OAuth flow to get Access token</doc>
+<tags>
+</tags>
+<status status="PASS" endtime="20140915 16:54:42.965" critical="yes" starttime="20140915 16:53:09.368"></status>
+</test>
+<test id="s1-t2" name="Get Org Details API Call">
+<kw type="kw" name="${RESPONSE} = Make Get API Call">
+<doc>Makes a Get API Call</doc>
+<arguments>
+<arg>${GET_ORG_URL}</arg>
+<arg>${AUTHORIZATION_HEADER}</arg>
+</arguments>
+<msg timestamp="20140915 16:54:42.968" level="TRACE">Arguments: [ ${url_path}=u'/api.xro/2.0/Organisation' | ${oauth_header}=u'helloworld' ]</msg>
+<kw type="kw" name="HttpLibrary.HTTP.Create Http Context">
+<doc>Sets the HTTP host to use for future requests. You must call this</doc>
+<arguments>
+<arg>${XERO_HOST}</arg>
+</arguments>
+<msg timestamp="20140915 16:54:42.969" level="TRACE">Arguments: [ u'api.xero.com' ]</msg>
+<msg timestamp="20140915 16:54:42.969" level="INFO">Host for next HTTP request set to 'api.xero.com'</msg>
+<msg timestamp="20140915 16:54:42.969" level="INFO">Scheme for next HTTP request set to 'http'</msg>
+<msg timestamp="20140915 16:54:42.970" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20140915 16:54:42.970" starttime="20140915 16:54:42.969"></status>
+</kw>
+<kw type="kw" name="HttpLibrary.HTTP.Set Request Header">
+<doc>Sets a request header for the next request.</doc>
+<arguments>
+<arg>Authorization</arg>
+<arg>${oauth_header}</arg>
+</arguments>
+<msg timestamp="20140915 16:54:42.970" level="TRACE">Arguments: [ u'Authorization' | u'helloworld' ]</msg>
+<msg timestamp="20140915 16:54:42.970" level="INFO">Set request header "Authorization" to "helloworld"</msg>
+<msg timestamp="20140915 16:54:42.970" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20140915 16:54:42.970" starttime="20140915 16:54:42.970"></status>
+</kw>
+<kw type="kw" name="HttpLibrary.HTTP.GET">
+<doc>Issues a HTTP GET request.</doc>
+<arguments>
+<arg>/api.xro/2.0/Organisation</arg>
+</arguments>
+<msg timestamp="20140915 16:54:42.971" level="TRACE">Arguments: [ u'/api.xro/2.0/Organisation' ]</msg>
+<msg timestamp="20140915 16:54:42.971" level="DEBUG">Request headers:</msg>
+<msg timestamp="20140915 16:54:42.971" level="DEBUG">Host: api.xero.com</msg>
+<msg timestamp="20140915 16:54:42.971" level="DEBUG">Authorization: helloworld</msg>
+<msg timestamp="20140915 16:54:42.971" level="DEBUG">No request body set</msg>
+<msg timestamp="20140915 16:54:42.971" level="DEBUG">Performing GET request on http://api.xero.com/api.xro/2.0/Organisation</msg>
+<msg timestamp="20140915 16:54:43.854" level="DEBUG">Response status line: 302 Redirect</msg>
+<msg timestamp="20140915 16:54:43.854" level="DEBUG">Response headers:</msg>
+<msg timestamp="20140915 16:54:43.854" level="DEBUG">content-length: 143</msg>
+<msg timestamp="20140915 16:54:43.855" level="DEBUG">x-powered-by: TeamXero</msg>
+<msg timestamp="20140915 16:54:43.855" level="DEBUG">server: Microsoft-IIS/7.5</msg>
+<msg timestamp="20140915 16:54:43.855" level="DEBUG">location: https://api.xero.com</msg>
+<msg timestamp="20140915 16:54:43.855" level="DEBUG">date: Mon, 15 Sep 2014 16:54:42 GMT</msg>
+<msg timestamp="20140915 16:54:43.855" level="DEBUG">content-type: text/html; charset=UTF-8</msg>
+<msg timestamp="20140915 16:54:43.855" level="DEBUG">x-s: 505390-O1VMAP05</msg>
+<msg timestamp="20140915 16:54:43.855" level="DEBUG">Response body:</msg>
+<msg timestamp="20140915 16:54:43.856" level="DEBUG">&lt;head&gt;&lt;title&gt;Document Moved&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;&lt;h1&gt;Object Moved&lt;/h1&gt;This document may be found &lt;a HREF="https://api.xero.com"&gt;here&lt;/a&gt;&lt;/body&gt;</msg>
+<msg timestamp="20140915 16:54:43.856" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20140915 16:54:43.856" starttime="20140915 16:54:42.971"></status>
+</kw>
+<kw type="kw" name="${body} = HttpLibrary.HTTP.Get Response Body">
+<doc>Get the response body.</doc>
+<arguments>
+</arguments>
+<msg timestamp="20140915 16:54:43.857" level="TRACE">Arguments: [  ]</msg>
+<msg timestamp="20140915 16:54:43.857" level="TRACE">Return: '&lt;head&gt;&lt;title&gt;Document Moved&lt;/title&gt;&lt;/head&gt;\n&lt;body&gt;&lt;h1&gt;Object Moved&lt;/h1&gt;This document may be found &lt;a HREF="https://api.xero.com"&gt;here&lt;/a&gt;&lt;/body&gt;'</msg>
+<msg timestamp="20140915 16:54:43.857" level="INFO">${body} = &lt;head&gt;&lt;title&gt;Document Moved&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;&lt;h1&gt;Object Moved&lt;/h1&gt;This document may be found &lt;a HREF="https://api.xero.com"&gt;here&lt;/a&gt;&lt;/body&gt;</msg>
+<status status="PASS" endtime="20140915 16:54:43.857" starttime="20140915 16:54:43.856"></status>
+</kw>
+<msg timestamp="20140915 16:54:43.857" level="TRACE">Return: '&lt;head&gt;&lt;title&gt;Document Moved&lt;/title&gt;&lt;/head&gt;\n&lt;body&gt;&lt;h1&gt;Object Moved&lt;/h1&gt;This document may be found &lt;a HREF="https://api.xero.com"&gt;here&lt;/a&gt;&lt;/body&gt;'</msg>
+<msg timestamp="20140915 16:54:43.858" level="INFO">${RESPONSE} = &lt;head&gt;&lt;title&gt;Document Moved&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;&lt;h1&gt;Object Moved&lt;/h1&gt;This document may be found &lt;a HREF="https://api.xero.com"&gt;here&lt;/a&gt;&lt;/body&gt;</msg>
+<status status="PASS" endtime="20140915 16:54:43.857" starttime="20140915 16:54:42.967"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Log">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${RESPONSE}</arg>
+</arguments>
+<msg timestamp="20140915 16:54:43.858" level="TRACE">Arguments: [ '&lt;head&gt;&lt;title&gt;Document Moved&lt;/title&gt;&lt;/head&gt;\n&lt;body&gt;&lt;h1&gt;Object Moved&lt;/h1&gt;This document may be found &lt;a HREF="https://api.xero.com"&gt;here&lt;/a&gt;&lt;/body&gt;' ]</msg>
+<msg timestamp="20140915 16:54:43.859" level="INFO">&lt;head&gt;&lt;title&gt;Document Moved&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;&lt;h1&gt;Object Moved&lt;/h1&gt;This document may be found &lt;a HREF="https://api.xero.com"&gt;here&lt;/a&gt;&lt;/body&gt;</msg>
+<msg timestamp="20140915 16:54:43.859" level="TRACE">Return: None</msg>
+<status status="PASS" endtime="20140915 16:54:43.859" starttime="20140915 16:54:43.858"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status status="PASS" endtime="20140915 16:54:43.859" critical="yes" starttime="20140915 16:54:42.966"></status>
+</test>
+<doc>Makes Org HTTP API calls</doc>
+<metadata>
+</metadata>
+<status status="PASS" endtime="20140915 16:54:43.860" starttime="20140915 16:53:07.881"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="2">Critical Tests</stat>
+<stat fail="0" pass="2">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" pass="2" id="s1" name="Http Api Calls">Http Api Calls</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

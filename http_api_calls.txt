@@ -1,0 +1,85 @@
+*** Settings ***
+Documentation     Makes Org HTTP API calls
+Library      oauth_dance.py
+Library      Selenium2Library    50
+Library    HttpLibrary.HTTP
+
+*** Variables ***
+
+
+${CONSUMER_KEY}    BY93LW1D9LEUYLBKA62T58AQNLC1FF
+${CONSUMER_SECRET}    SWGCNDJA1VYAPCHDDBQ9HCRMXB5GES
+${BROWSER_FIREFOX}     firefox
+${USER_EMAIL}     deepti.kinnerkar@gmail.com
+${USER_PASSWORD}     Secret123
+${VERIFIER_TOKEN_XPATH}     xpath=//h1[2]
+${EMAIL_INPUT_TEXTBOX}     id=email
+${PASSWORD_INPUT_TEXTBOX}    id=password
+${LOGIN_BUTTON}     id=submitButton
+${AUTHORISE_BUTTON}    //span[text()="Authorise"]
+
+${XERO_HOST}    api.xero.com
+${GET_ORG_URL}     /api.xro/2.0/Organisation
+
+${AUTHORIZATION_HEADER}     test
+
+*** Test Cases ***
+
+
+Do the OAuth Dance
+	[Documentation]    Does the OAuth flow to get Access token
+	${REQUEST_TOKEN}=     Get Oauth Token     ${CONSUMER_KEY}   ${CONSUMER_SECRET}
+	${OAUTH_TOKEN_PAGE_URL}=     Get Oauth Token Page Url     ${REQUEST_TOKEN}
+    Launch OAuth Token Page    	${OAUTH_TOKEN_PAGE_URL}
+	Sign In to Xero And Authorize
+	${VERIFIER_TOKEN}=   Extract Verifier Code
+	${ACCESS_TOKEN}=     Get Access Token     ${REQUEST_TOKEN}   ${VERIFIER_TOKEN}  ${CONSUMER_KEY}   ${CONSUMER_SECRET}
+	Set Suite Variable     ${ACCESS_TOKEN}
+    Close Browser
+
+
+#Set Authorization Header
+#	[Documentation]     Set the Authorization header to authenticate the API
+#   I could not determine the 'oauth_signature' value due to lack of and hence could not set the authorization field
+#   For Time being I have set Authorization header as 'test'
+
+
+Get Org Details API Call
+	${RESPONSE}=    Make Get API Call    ${GET_ORG_URL}    ${AUTHORIZATION_HEADER}
+	log    ${RESPONSE}
+	
+
+
+*** Keyword ***
+
+
+Launch OAuth Token Page    [Arguments]    ${PAGE_URL}
+	[Documentation]     Launches Xero site in Firefox
+	Open Browser                     ${PAGE_URL}   ${BROWSER_FIREFOX}
+	Maximize Browser Window
+	Page Should Contain Element     ${EMAIL_INPUT_TEXTBOX}
+    Set Selenium Speed      3
+
+Sign In to Xero And Authorize
+	[Documentation]     Log into the xero website
+	Input Text     ${EMAIL_INPUT_TEXTBOX}    ${USER_EMAIL}
+	Input Text     ${PASSWORD_INPUT_TEXTBOX}    ${USER_PASSWORD}
+	Click Element     ${LOGIN_BUTTON}
+    Page Should Contain Element     ${AUTHORISE_BUTTON}
+	Click Element      ${AUTHORISE_BUTTON}
+	Page Should Contain Element     ${VERIFIER_TOKEN_XPATH}
+	
+Extract Verifier Code    
+	${TOKEN}=    Get Text    ${VERIFIER_TOKEN_XPATH}
+	[Return]    ${TOKEN} 
+
+
+Make Get API Call    [Arguments]     ${url_path}   ${oauth_header}
+    [Documentation]    Makes a Get API Call   
+	Create Http Context     ${XERO_HOST}
+	Set Request Header     Authorization    ${oauth_header}
+    GET    /api.xro/2.0/Organisation
+	${body}=    Get Response Body
+    [Return]    ${body}
+	
+
