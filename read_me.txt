@@ -11,9 +11,9 @@ Steps to run robot framework test cases in Mac machine:
 3. Navigate upto the location where the file 'http_api_calls.txt' is located.
 
 4. Run the test using the below command:
-   pybot -L TRACE -v AUTHORIZATION_HEADER:helloworld http_api_calls.txt
+   pybot -L TRACE -v AUTHORIZATION_HEADER:helloworld -v USER_EMAIL:test@gmail.com -v USER_PASSWORD=mypassword http_api_calls.txt
 
-   Note: Change 'helloworld' to a valid OAUth 1.0 Authorization Header
+   Note: Change 'helloworld' to a valid OAuth 1.0 Authorization Header. Also change email and password to valid xero credentials
 
 5. To view the report, please open 'report.html' file generated at same location. I have attached a sample report which was generated for this test case.
 

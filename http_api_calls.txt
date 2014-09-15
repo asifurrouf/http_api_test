@@ -10,8 +10,8 @@ Library    HttpLibrary.HTTP
 ${CONSUMER_KEY}    BY93LW1D9LEUYLBKA62T58AQNLC1FF
 ${CONSUMER_SECRET}    SWGCNDJA1VYAPCHDDBQ9HCRMXB5GES
 ${BROWSER_FIREFOX}     firefox
-${USER_EMAIL}     deepti.kinnerkar@gmail.com
-${USER_PASSWORD}     Secret123
+${USER_EMAIL}     test@gmail.com
+${USER_PASSWORD}     testpasswd
 ${VERIFIER_TOKEN_XPATH}     xpath=//h1[2]
 ${EMAIL_INPUT_TEXTBOX}     id=email
 ${PASSWORD_INPUT_TEXTBOX}    id=password
@@ -47,7 +47,8 @@ Do the OAuth Dance
 Get Org Details API Call
 	${RESPONSE}=    Make Get API Call    ${GET_ORG_URL}    ${AUTHORIZATION_HEADER}
 	log    ${RESPONSE}
-	
+
+
 
 
 *** Keyword ***
